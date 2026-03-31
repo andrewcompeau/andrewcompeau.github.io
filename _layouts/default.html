@@ -4,28 +4,67 @@
     <meta charset="UTF-8">
     <title>Andrew's Webpage</title>
     <style>
-        /* Light mode (default) */
+        :root {
+            --bg: #f4f4f4;
+            --text: #222;
+            --nav-bg: #333;
+            --section-bg: white;
+            --link: #0066cc;
+        }
+
+        /* Dark theme variables */
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --nav-bg: #1e1e1e;
+            --section-bg: #1f1f1f;
+            --link: #4da3ff;
+        }
+
+        /* Auto dark mode when theme = system */
+        @media (prefers-color-scheme: dark) {
+            [data-theme="system"] {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --nav-bg: #1e1e1e;
+                --section-bg: #1f1f1f;
+                --link: #4da3ff;
+            }
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #f4f4f4;
-            color: #222;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         nav {
-            background-color: #333;
+            background-color: var(--nav-bg);
             padding: 10px 20px;
             position: sticky;
             top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
         nav a {
             color: white;
             margin-right: 20px;
             text-decoration: none;
             font-size: 18px;
         }
+
         nav a:hover {
             text-decoration: underline;
+        }
+
+        /* Theme selector */
+        .theme-toggle {
+            color: white;
+            font-size: 16px;
         }
 
         .container {
@@ -33,67 +72,55 @@
         }
 
         h1 {
-            color: #333;
+            color: var(--text);
         }
 
         .section {
-            background: white;
+            background: var(--section-bg);
             padding: 20px;
             margin-bottom: 25px;
             border-radius: 8px;
             box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
 
         h2 {
             display: flex;
             align-items: center;
-            color: #444;
+            color: var(--text);
+        }
+
+        /* FIXED IMAGE SIZING — consistent across all sections */
+        .section img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-right: 10px;
         }
 
         a {
-            color: #0066cc;
+            color: var(--link);
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
-
-        /* 🌙 DARK MODE */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #121212;
-                color: #e0e0e0;
-            }
-
-            nav {
-                background-color: #1e1e1e;
-            }
-
-            nav a {
-                color: #ddd;
-            }
-
-            .section {
-                background: #1f1f1f;
-                box-shadow: 0 0 8px rgba(255,255,255,0.05);
-            }
-
-            h1, h2 {
-                color: #e0e0e0;
-            }
-
-            a {
-                color: #4da3ff;
-            }
-        }
     </style>
 </head>
-<body>
+<body data-theme="system">
 
     <nav>
-        <a href="#school">School</a>
-        <a href="#minecraft">Minecraft</a>
-        <a href="#gaming">Gaming</a>
+        <div>
+            <a href="#school">School</a>
+            <a href="#minecraft">Minecraft</a>
+            <a href="#gaming">Gaming</a>
+        </div>
+
+        <select class="theme-toggle" id="themeSelect">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
     </nav>
 
     <div class="container">
@@ -135,6 +162,24 @@
         </div>
 
     </div>
+
+    <script>
+        const themeSelect = document.getElementById("themeSelect");
+        const body = document.body;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            body.setAttribute("data-theme", savedTheme);
+            themeSelect.value = savedTheme;
+        }
+
+        themeSelect.addEventListener("change", () => {
+            const theme = themeSelect.value;
+            body.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+        });
+    </script>
 
 </body>
 </html>
