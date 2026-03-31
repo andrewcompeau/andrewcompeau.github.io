@@ -63,8 +63,18 @@
 
         /* Theme selector */
         .theme-toggle {
-            color: white;
-            font-size: 16px;
+            background: var(--section-bg);
+            color: var(--text);
+            border: 1px solid var(--text);
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        
+        .theme-toggle option {
+            background: var(--section-bg);
+            color: var(--text);
         }
 
         .container {
