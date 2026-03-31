@@ -1,2 +1,1 @@
-# andrewcompeau.github.io
-Andrew's Website
+# Andrew's Website
