@@ -45,3 +45,96 @@
         }
 
         h2 {
+            display: flex;
+            align-items: center;
+            color: #444;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 🌙 DARK MODE */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+
+            nav {
+                background-color: #1e1e1e;
+            }
+
+            nav a {
+                color: #ddd;
+            }
+
+            .section {
+                background: #1f1f1f;
+                box-shadow: 0 0 8px rgba(255,255,255,0.05);
+            }
+
+            h1, h2 {
+                color: #e0e0e0;
+            }
+
+            a {
+                color: #4da3ff;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#school">School</a>
+        <a href="#minecraft">Minecraft</a>
+        <a href="#gaming">Gaming</a>
+    </nav>
+
+    <div class="container">
+        <h1>Andrew's Webpage</h1>
+
+        <div class="section" id="school">
+            <h2>
+                <img src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f3eb.png" alt="School Icon">
+                School Resources
+            </h2>
+            <ul>
+                <li><a href="https://www.savvasrealize.com" target="_blank">Savvas Realize</a></li>
+                <li><a href="https://launchpad.classlink.com" target="_blank">ClassLink</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="minecraft">
+            <h2>
+                <img src="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.19.2/assets/minecraft/textures/item/diamond_sword.png" alt="Minecraft Icon">
+                Minecraft
+            </h2>
+            <ul>
+                <li><a href="https://www.minecraft.net" target="_blank">Official Minecraft Website</a></li>
+                <li><a href="https://www.curseforge.com/minecraft" target="_blank">Minecraft Mods (CurseForge)</a></li>
+                <li><a href="https://minecraft.fandom.com/wiki/Minecraft_Wiki" target="_blank">Minecraft Wiki</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="gaming">
+            <h2>
+                <img src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f3ae.png" alt="Gaming Icon">
+                Gaming
+            </h2>
+            <ul>
+                <li><a href="https://www.nintendo.com/switch/" target="_blank">Nintendo Switch 2 Info</a></li>
+                <li><a href="https://www.pcgamingwiki.com" target="_blank">PC Gaming Resources</a></li>
+                <li><a href="https://www.playstation.com/ps5/" target="_blank">PlayStation 5</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>
